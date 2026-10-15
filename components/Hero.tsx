@@ -64,13 +64,13 @@ export function Hero() {
       <div className="relative mx-auto flex max-w-3xl flex-col items-center gap-4 px-4 py-10 text-center sm:gap-5 sm:px-6">
         <h1
           key={`titulo-${atual}`}
-          className="animate-[slide-texto_600ms_ease-out] font-display text-3xl text-white drop-shadow-md sm:text-5xl"
+          className="slide-legenda font-display text-3xl text-white drop-shadow-md sm:text-5xl"
         >
           {slide.titulo}
         </h1>
         <p
           key={`texto-${atual}`}
-          className="animate-[slide-texto_600ms_ease-out] max-w-xl text-sm text-white/90 drop-shadow sm:text-base"
+          className="slide-legenda max-w-xl text-sm text-white/90 drop-shadow sm:text-base"
         >
           {slide.texto}
         </p>

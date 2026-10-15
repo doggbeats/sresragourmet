@@ -165,7 +165,7 @@ select option {
 @keyframes slide-texto {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
@@ -173,8 +173,12 @@ select option {
   }
 }
 
+.slide-legenda {
+  animation: slide-texto 700ms ease-out both;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  [class*="animate-[slide-texto"] {
+  .slide-legenda {
     animation: none;
   }
 }
