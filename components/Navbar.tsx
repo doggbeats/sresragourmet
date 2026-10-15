@@ -12,8 +12,8 @@ const LINKS = [
   { href: "/", label: "Início" },
   { href: "/servicos", label: "Serviços" },
   { href: "/galeria", label: "Galeria" },
-  { href: "/contato", label: "Contato" },
-  { href: "/orcamento", label: "Orçamento" },
+  { href: "/contato", label: "Contatos" },
+  { href: "/orcamento", label: "Orçamentos" },
 ] as const;
 
 const CLASSE_SOCIAL =
