@@ -96,6 +96,7 @@ export function QuoteWizard() {
       | "crepesDoces"
       | "massas"
       | "churrasco"
+      | "almocoJantar"
       | "pratoPrincipal"
       | "acompanhamentos",
     item: string,
@@ -237,12 +238,24 @@ export function QuoteWizard() {
             ) : null}
             {estado.servicos.includes("almoco-jantar") ? (
               <DishSelector
-                selecionado={estado.almocoJantar[0] ?? ""}
-                onSelecionar={(nome) =>
-                  setEstado((atual) => ({
-                    ...atual,
-                    almocoJantar: nome ? [nome] : [],
-                  }))
+                selecionados={estado.almocoJantar}
+                onToggle={(item) => alternar("almocoJantar", item)}
+                onSelecionarCardapio={(itens) =>
+                  setEstado((atual) => {
+                    const todosSelecionados = itens.every((item) =>
+                      atual.almocoJantar.includes(item),
+                    );
+                    return {
+                      ...atual,
+                      almocoJantar: todosSelecionados
+                        ? atual.almocoJantar.filter(
+                            (item) => !itens.includes(item),
+                          )
+                        : Array.from(
+                            new Set([...atual.almocoJantar, ...itens]),
+                          ),
+                    };
+                  })
                 }
               />
             ) : null}
