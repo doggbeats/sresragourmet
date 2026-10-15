@@ -1,0 +1,64 @@
+import type { BebidaConfig, GrupoBebida } from "@/types/quote";
+
+export const GRUPOS_BEBIDA: { id: GrupoBebida; nome: string }[] = [
+  { id: "agua", nome: "Água" },
+  { id: "sucos", nome: "Sucos naturais" },
+  { id: "refrigerantes", nome: "Refrigerantes" },
+];
+
+export const BEBIDAS: BebidaConfig[] = [
+  {
+    id: "agua-mineral",
+    nome: "Água mineral",
+    grupo: "agua",
+    unidade: "ml",
+    consumoPorPessoa: null,
+    embalagem: null,
+    preco: null,
+  },
+  {
+    id: "suco-abacaxi-hortela",
+    nome: "Suco de abacaxi com hortelã",
+    grupo: "sucos",
+    unidade: "ml",
+    consumoPorPessoa: null,
+    embalagem: null,
+    preco: null,
+  },
+  {
+    id: "suco-goiaba",
+    nome: "Suco de goiaba",
+    grupo: "sucos",
+    unidade: "ml",
+    consumoPorPessoa: null,
+    embalagem: null,
+    preco: null,
+  },
+  {
+    id: "refri-coca-cola",
+    nome: "Coca-Cola",
+    grupo: "refrigerantes",
+    unidade: "ml",
+    consumoPorPessoa: null,
+    embalagem: null,
+    preco: null,
+  },
+  {
+    id: "refri-guarana",
+    nome: "Guaraná",
+    grupo: "refrigerantes",
+    unidade: "ml",
+    consumoPorPessoa: null,
+    embalagem: null,
+    preco: null,
+  },
+  {
+    id: "refri-fanta",
+    nome: "Fanta",
+    grupo: "refrigerantes",
+    unidade: "ml",
+    consumoPorPessoa: null,
+    embalagem: null,
+    preco: null,
+  },
+];

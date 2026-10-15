@@ -1,0 +1,22 @@
+import {
+  CHURRASCO_ITENS,
+  CREPES_DOCES,
+  CREPES_SALGADOS,
+  MASSAS_ITENS,
+  MASSAS_MOLHOS,
+} from "@/data/menu";
+import type { ServicoId } from "@/types/quote";
+
+export type SecaoCardapio = { titulo: string; itens: string[] };
+
+export const CARDAPIOS: Partial<Record<ServicoId, SecaoCardapio[]>> = {
+  "crepe-salgado": [{ titulo: "Ingredientes", itens: CREPES_SALGADOS }],
+  "crepe-doce": [{ titulo: "Recheios", itens: CREPES_DOCES }],
+  "rodizio-massas": [
+    { titulo: "Tipos de massa:", itens: [...MASSAS_ITENS, ...MASSAS_MOLHOS] },
+    { titulo: "Ingredientes", itens: CREPES_SALGADOS },
+  ],
+  churrasco: [
+    { titulo: "Carnes e acompanhamentos", itens: CHURRASCO_ITENS },
+  ],
+};

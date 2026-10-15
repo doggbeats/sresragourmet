@@ -1,26 +1,116 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-bg: #000000;
+  --color-surface: #0a0a0a;
+  --color-surface-2: #141414;
+  --color-line: #2b2b2b;
+  --color-accent: #ffffff;
+  --color-accent-soft: #e8e8e8;
+  --color-accent-deep: #b0b0b0;
+  --color-gold: #d4af37;
+  --color-ink: #ffffff;
+  --color-muted: #9d9d9d;
+  --color-danger: #ff8a75;
+
+  --font-sans: var(--font-biko), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-biko), ui-sans-serif, system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background-color: var(--color-bg);
+  color-scheme: dark;
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+select option {
+  background-color: var(--color-surface-2);
+  color: var(--color-ink);
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: #000000;
+}
+
+@media print {
+  @page {
+    margin: 16mm;
+  }
+
+  body {
+    background: #ffffff;
+    color: #000000;
+  }
+
+  .nao-imprimir {
+    display: none !important;
+  }
+
+  .apenas-imprimir {
+    display: block !important;
+  }
+}
+
+.apenas-imprimir {
+  display: none;
+}
+
+.btn-orcamento {
+  background-color: #d4af37;
+  color: #ffffff;
+  border: 1px solid transparent;
+}
+
+.btn-orcamento:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+@keyframes hero-zoom {
+  from {
+    transform: scale(1.2);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.hero-zoom {
+  animation: hero-zoom 3s ease-out both;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-zoom {
+    animation: none;
+  }
+}
+
+@keyframes galeria-zoom {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
