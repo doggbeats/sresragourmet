@@ -164,6 +164,14 @@ export function QuoteSummary({
                 }
               />
             ) : null}
+            {estado.servicos.includes("almoco-jantar") ? (
+              <Linha
+                rotulo="Saladas"
+                valor={
+                  estado.saladas.join(", ") || "saladas a confirmar pelo buffet"
+                }
+              />
+            ) : null}
             {estado.cardapioPersonalizado.trim() ? (
               <Linha
                 rotulo="Sugestões"

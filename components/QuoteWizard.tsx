@@ -21,7 +21,7 @@ import {
   parseConvidados,
   resumirBebidas,
 } from "@/lib/quote";
-import { ACOMPANHAMENTOS, PRATOS_PRINCIPAIS } from "@/data/menu";
+import { ACOMPANHAMENTOS, PRATOS_PRINCIPAIS, SALADAS } from "@/data/menu";
 import { validarDadosEvento, validarServicos, type ErrosOrcamento } from "@/lib/validation";
 import { gerarLinkWhatsApp, montarMensagemWhatsApp, whatsappConfigurado } from "@/lib/whatsapp";
 import type {
@@ -96,7 +96,8 @@ export function QuoteWizard() {
       | "massas"
       | "churrasco"
       | "pratoPrincipal"
-      | "acompanhamentos",
+      | "acompanhamentos"
+      | "saladas",
     item: string,
   ) {
     setEstado((atual) => {
@@ -254,6 +255,17 @@ export function QuoteWizard() {
                 itens={ACOMPANHAMENTOS}
                 selecionados={estado.acompanhamentos}
                 onToggle={(item) => alternar("acompanhamentos", item)}
+              />
+            ) : null}
+            {estado.servicos.includes("almoco-jantar") ? (
+              <MultiItemSelector
+                titulo="Saladas"
+                descricao="Selecione as saladas que deseja incluir."
+                dica="As saladas serão confirmadas pelo buffet."
+                vazio="O buffet ainda não cadastrou as saladas disponíveis."
+                itens={SALADAS}
+                selecionados={estado.saladas}
+                onToggle={(item) => alternar("saladas", item)}
               />
             ) : null}
 

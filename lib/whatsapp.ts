@@ -110,6 +110,9 @@ export function montarMensagemWhatsApp(estado: OrcamentoState): string {
     cardapio.push(
       `Acompanhamentos: ${lista(estado.acompanhamentos, "a confirmar pelo buffet")}`,
     );
+    cardapio.push(
+      `Saladas: ${lista(estado.saladas, "a confirmar pelo buffet")}`,
+    );
   }
   if (estado.cardapioPersonalizado.trim()) {
     cardapio.push(`Sugestões do cliente: ${estado.cardapioPersonalizado.trim()}`);

@@ -44,16 +44,19 @@ export const ACOMPANHAMENTOS = [
   "Risoto de parmesão",
   "Batatas gratinadas",
   "Legumes salteados",
-  "Salada: folhas nobres com pera e nozes",
   "Arroz à grega",
-  "Salada tropical",
   "Legumes na manteiga",
   "Arroz com amêndoas",
-  "Salada especial",
   "Batatas rústicas",
   "Arroz branco",
   "Macarrão alho e óleo",
   "Farofa temperada",
+];
+
+export const SALADAS = [
+  "Salada tropical",
+  "Salada especial",
+  "Salada: folhas nobres com pera e nozes",
 ];
 
 export interface CardapioAlmocoJantar {
