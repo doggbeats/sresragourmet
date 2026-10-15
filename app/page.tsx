@@ -8,6 +8,7 @@ import {
   Zap,
 } from "lucide-react";
 import { Hero } from "@/components/Hero";
+import { Reveal } from "@/components/Reveal";
 
 const PASSOS = [
   {
@@ -31,14 +32,16 @@ export default function Home() {
 
       <main className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
         <section id="servicos" className="scroll-mt-20">
-          <h2 className="text-center text-xs font-medium uppercase tracking-[0.25em] text-muted">
-            Nossos Valores
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-muted">
-            Acreditamos que cada evento merece cuidado, dedicação e sabores
-            especiais. Por isso, trabalhamos para oferecer qualidade, confiança e
-            momentos inesquecíveis em cada celebração.
-          </p>
+          <Reveal>
+            <h2 className="text-center text-xs font-medium uppercase tracking-[0.25em] text-muted">
+              Nossos Valores
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-muted">
+              Acreditamos que cada evento merece cuidado, dedicação e sabores
+              especiais. Por isso, trabalhamos para oferecer qualidade, confiança
+              e momentos inesquecíveis em cada celebração.
+            </p>
+          </Reveal>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {[
               {
@@ -71,41 +74,46 @@ export default function Home() {
                 texto: "Oferecemos um atendimento prático e eficiente, desde a solicitação do orçamento até o planejamento do seu evento.",
                 icone: Zap,
               },
-            ].map((valor) => (
-              <article
-                key={valor.titulo}
-                className="rounded-2xl border border-line bg-surface/70 p-5"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-full border border-line bg-surface-2 flex items-center justify-center">
-                    <valor.icone className="h-6 w-6 text-accent-soft" />
+            ].map((valor, indice) => (
+              <Reveal key={valor.titulo} delay={(indice % 3) * 100}>
+                <article className="h-full rounded-2xl border border-line bg-surface/70 p-5">
+                  <div className="flex items-center gap-3">
+                    <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-full border border-line bg-surface-2 flex items-center justify-center">
+                      <valor.icone className="h-6 w-6 text-accent-soft" />
+                    </div>
+                    <h3 className="font-display text-lg text-accent-soft">
+                      {valor.titulo}
+                    </h3>
                   </div>
-                  <h3 className="font-display text-lg text-accent-soft">
-                    {valor.titulo}
-                  </h3>
-                </div>
-                <p className="mt-3 text-sm text-muted">{valor.texto}</p>
-              </article>
+                  <p className="mt-3 text-sm text-muted">{valor.texto}</p>
+                </article>
+              </Reveal>
             ))}
           </div>
-          <div className="mt-6 text-center">
-            <Link
-              href="/servicos"
-              className="inline-flex items-center gap-2 rounded-full border border-line px-5 py-2.5 text-sm font-medium text-muted transition hover:border-accent/40 hover:text-accent-soft"
-            >
-              Ver todos os serviços
-            </Link>
-          </div>
+          <Reveal delay={100}>
+            <div className="mt-6 text-center">
+              <Link
+                href="/servicos"
+                className="inline-flex items-center gap-2 rounded-full border border-line px-5 py-2.5 text-sm font-medium text-muted transition hover:border-accent/40 hover:text-accent-soft"
+              >
+                Ver todos os serviços
+              </Link>
+            </div>
+          </Reveal>
         </section>
 
         <section className="mt-16">
-          <h2 className="text-center font-display text-2xl text-accent-soft sm:text-3xl">
-            Como funciona
-          </h2>
+          <Reveal>
+            <h2 className="text-center font-display text-2xl text-accent-soft sm:text-3xl">
+              Como funciona
+            </h2>
+          </Reveal>
           <ol className="mt-6 grid gap-3 sm:grid-cols-3">
             {PASSOS.map((passo, indice) => (
-              <li
+              <Reveal
+                as="li"
                 key={passo.titulo}
+                delay={indice * 100}
                 className="rounded-2xl border border-line bg-surface/70 p-5"
               >
                 <span className="font-display text-3xl text-accent">
@@ -113,7 +121,7 @@ export default function Home() {
                 </span>
                 <p className="mt-2 font-medium text-ink">{passo.titulo}</p>
                 <p className="mt-1 text-sm text-muted">{passo.texto}</p>
-              </li>
+              </Reveal>
             ))}
           </ol>
         </section>

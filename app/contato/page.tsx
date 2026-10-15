@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { InstagramIcon, WhatsAppIcon } from "@/components/icons";
+import { Reveal } from "@/components/Reveal";
 import {
   BUFFET,
   IDENTIFICADOR_BUFFET,
@@ -39,17 +40,19 @@ export default function ContatoPage() {
   return (
     <main className="mx-auto max-w-2xl px-4 py-12 sm:px-6">
       <header className="text-center">
-        <h1 className="font-display text-3xl text-accent-soft sm:text-4xl">
-          Contato
-        </h1>
-        <p className="mx-auto mt-2 max-w-xl text-sm text-muted">
-          {NOME_BUFFET} — {IDENTIFICADOR_BUFFET}. Fale com a gente para tirar
-          dúvidas ou solicitar um orçamento.
-        </p>
+        <Reveal>
+          <h1 className="font-display text-3xl text-accent-soft sm:text-4xl">
+            Contato
+          </h1>
+          <p className="mx-auto mt-2 max-w-xl text-sm text-muted">
+            {NOME_BUFFET} — {IDENTIFICADOR_BUFFET}. Fale com a gente para tirar
+            dúvidas ou solicitar um orçamento.
+          </p>
+        </Reveal>
       </header>
 
-      <ul className="mt-8 space-y-3">
-        {contatos.map((contato) => {
+      <div className="mt-8 space-y-3">
+        {contatos.map((contato, indice) => {
           const conteudo = (
             <>
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line bg-surface-2 text-accent-soft">
@@ -67,7 +70,7 @@ export default function ContatoPage() {
           );
 
           return (
-            <li key={contato.rotulo}>
+            <Reveal key={contato.rotulo} delay={indice * 80}>
               {contato.href ? (
                 <a
                   href={contato.href}
@@ -82,19 +85,21 @@ export default function ContatoPage() {
                   {conteudo}
                 </div>
               )}
-            </li>
+            </Reveal>
           );
         })}
-      </ul>
-
-      <div className="mt-8 text-center">
-        <Link
-          href="/orcamento"
-          className="btn-orcamento inline-flex items-center justify-center rounded-lg px-6 py-3 text-base font-semibold"
-        >
-          Solicite seu orçamento
-        </Link>
       </div>
+
+      <Reveal delay={120}>
+        <div className="mt-8 text-center">
+          <Link
+            href="/orcamento"
+            className="btn-orcamento inline-flex items-center justify-center rounded-lg px-6 py-3 text-base font-semibold"
+          >
+            Solicite seu orçamento
+          </Link>
+        </div>
+      </Reveal>
     </main>
   );
 }

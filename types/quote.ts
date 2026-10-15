@@ -3,13 +3,15 @@ export type ServicoId =
   | "crepe-doce"
   | "rodizio-massas"
   | "churrasco"
-  | "almoco-jantar";
+  | "almoco-jantar"
+  | "drinks";
 
 export interface ServicoInfo {
   id: ServicoId;
   nome: string;
   descricao: string;
   imagem?: string | null;
+  imagens?: string[];
   precoPorPessoa?: number | null;
   precoPacote?: number | null;
 }

@@ -41,6 +41,15 @@ export const SERVICOS: ServicoInfo[] = [
     precoPorPessoa: null,
     precoPacote: null,
   },
+  {
+    id: "drinks",
+    nome: "Drinks",
+    descricao: "Coquetéis e drinks preparados na hora para animar o seu evento. Opções com e sem álcool para todos os convidados.",
+    imagem: "/4.jpeg",
+    imagens: ["/4.jpeg", "/5.jpeg", "/8.jpeg"],
+    precoPorPessoa: null,
+    precoPacote: null,
+  },
 ];
 
 export const PACOTES: PacoteInfo[] = [];

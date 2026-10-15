@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { readdirSync } from "node:fs";
 import { join } from "node:path";
 import { GaleriaGrid } from "@/components/GaleriaGrid";
+import { Reveal } from "@/components/Reveal";
 
 export const metadata: Metadata = {
   title: "Galeria — Sr. e Srta. Gourmet",
@@ -27,9 +28,11 @@ export default function GaleriaPage() {
   return (
     <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
       <header className="text-center">
-        <h1 className="font-display text-3xl text-accent-soft sm:text-4xl">
-          Galeria
-        </h1>
+        <Reveal>
+          <h1 className="font-display text-3xl text-accent-soft sm:text-4xl">
+            Galeria
+          </h1>
+        </Reveal>
       </header>
 
       <GaleriaGrid fotos={fotos} />

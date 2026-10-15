@@ -1,6 +1,6 @@
 "use client";
 
-import { Beef, Cake, Soup, Utensils, UtensilsCrossed } from "lucide-react";
+import { Beef, Cake, Martini, Soup, Utensils, UtensilsCrossed } from "lucide-react";
 import Image from "next/image";
 import type { ComponentType } from "react";
 import { SERVICOS } from "@/data/services";
@@ -13,6 +13,7 @@ const ICONES: Record<ServicoId, ComponentType<{ className?: string }>> = {
   "rodizio-massas": Soup,
   churrasco: Beef,
   "almoco-jantar": UtensilsCrossed,
+  drinks: Martini,
 };
 
 export function ServiceSelector({

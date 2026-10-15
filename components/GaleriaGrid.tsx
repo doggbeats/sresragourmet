@@ -1,11 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { X } from "lucide-react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { Reveal } from "./Reveal";
+import { cx } from "./ui";
 
 export function GaleriaGrid({ fotos }: { fotos: string[] }) {
   const [aberta, setAberta] = useState<string | null>(null);
+  const [ativo, setAtivo] = useState(0);
+  const trilhaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!aberta) {
@@ -20,25 +24,84 @@ export function GaleriaGrid({ fotos }: { fotos: string[] }) {
     return () => window.removeEventListener("keydown", aoTeclar);
   }, [aberta]);
 
+  const irPara = (destino: number) => {
+    const trilha = trilhaRef.current;
+    if (!trilha) {
+      return;
+    }
+    const indice = Math.max(0, Math.min(fotos.length - 1, destino));
+    trilha.scrollTo({ left: indice * trilha.clientWidth, behavior: "smooth" });
+    setAtivo(indice);
+  };
+
+  const aoRolar = () => {
+    const trilha = trilhaRef.current;
+    if (!trilha || trilha.clientWidth === 0) {
+      return;
+    }
+    const indice = Math.round(trilha.scrollLeft / trilha.clientWidth);
+    setAtivo((anterior) => (anterior === indice ? anterior : indice));
+  };
+
   return (
     <>
-      <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-        {fotos.map((src) => (
-          <button
+      <div
+        ref={trilhaRef}
+        onScroll={aoRolar}
+        className="no-scrollbar mt-8 flex snap-x snap-mandatory overflow-x-auto scroll-smooth md:grid md:grid-cols-3 md:gap-3 md:overflow-visible lg:grid-cols-4"
+      >
+        {fotos.map((src, indice) => (
+          <Reveal
             key={src}
-            type="button"
-            onClick={() => setAberta(src)}
-            className="group relative aspect-square overflow-hidden rounded-2xl border border-line bg-surface/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50"
+            delay={(indice % 4) * 80}
+            className="min-w-full flex-none snap-center md:min-w-0"
           >
-            <Image
-              src={src}
-              alt=""
-              fill
-              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-              className="object-cover transition duration-300 group-hover:scale-105"
-            />
-          </button>
+            <button
+              type="button"
+              onClick={() => setAberta(src)}
+              className="group relative block aspect-square w-full overflow-hidden rounded-2xl border border-line bg-surface/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50"
+            >
+              <Image
+                src={src}
+                alt=""
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 33vw, 25vw"
+                className="object-cover transition duration-300 group-hover:scale-105"
+              />
+            </button>
+          </Reveal>
         ))}
+      </div>
+
+      <div className="mt-4 flex items-center justify-center gap-4 md:hidden">
+        <button
+          type="button"
+          onClick={() => irPara(ativo - 1)}
+          disabled={ativo === 0}
+          aria-label="Foto anterior"
+          className={cx(
+            "flex h-10 w-10 items-center justify-center rounded-full border border-line bg-surface/70 text-muted transition hover:border-accent/40 hover:text-accent-soft",
+            ativo === 0 && "cursor-default opacity-40 hover:border-line hover:text-muted",
+          )}
+        >
+          <ChevronLeft className="h-5 w-5" />
+        </button>
+        <span className="min-w-16 text-center text-xs text-muted">
+          {fotos.length > 0 ? `${ativo + 1} / ${fotos.length}` : "0 / 0"}
+        </span>
+        <button
+          type="button"
+          onClick={() => irPara(ativo + 1)}
+          disabled={ativo === fotos.length - 1}
+          aria-label="Próxima foto"
+          className={cx(
+            "flex h-10 w-10 items-center justify-center rounded-full border border-line bg-surface/70 text-muted transition hover:border-accent/40 hover:text-accent-soft",
+            ativo === fotos.length - 1 &&
+              "cursor-default opacity-40 hover:border-line hover:text-muted",
+          )}
+        >
+          <ChevronRight className="h-5 w-5" />
+        </button>
       </div>
 
       {aberta ? (

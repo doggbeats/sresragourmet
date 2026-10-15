@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
+import { Reveal } from "@/components/Reveal";
 import { CARDAPIOS } from "@/data/cardapios";
 import { SERVICOS } from "@/data/services";
 import type { ServicoId } from "@/types/quote";
@@ -53,31 +54,37 @@ export default async function ServicoPage({
         Voltar para serviços
       </Link>
 
-      <h1 className="mt-5 font-display text-3xl text-accent-soft sm:text-4xl">
-        {servico.nome}
-      </h1>
+      <Reveal>
+        <h1 className="mt-5 font-display text-3xl text-accent-soft sm:text-4xl">
+          {servico.nome}
+        </h1>
+      </Reveal>
 
       {servico.imagem ? (
-        <div className="relative mt-5 aspect-[16/10] w-full overflow-hidden rounded-2xl border border-line">
-          <Image
-            src={servico.imagem}
-            alt={servico.nome}
-            fill
-            priority
-            sizes="(max-width: 768px) 100vw, 48rem"
-            className="object-cover"
-          />
-        </div>
+        <Reveal delay={80}>
+          <div className="relative mt-5 aspect-[16/10] w-full overflow-hidden rounded-2xl border border-line">
+            <Image
+              src={servico.imagem}
+              alt={servico.nome}
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 48rem"
+              className="object-cover"
+            />
+          </div>
+        </Reveal>
       ) : null}
 
-      <p className="mt-5 text-sm text-muted sm:text-base">
-        {servico.descricao}
-      </p>
+      <Reveal delay={120}>
+        <p className="mt-5 text-sm text-muted sm:text-base">
+          {servico.descricao}
+        </p>
+      </Reveal>
 
       <div className="mt-6 space-y-5">
-        {secoes.map((secao) =>
+        {secoes.map((secao, indice) =>
           secao.itens.length > 0 ? (
-            <div key={secao.titulo}>
+            <Reveal key={secao.titulo} delay={(indice % 3) * 80}>
               <h2 className="text-xs font-medium uppercase tracking-wide text-muted">
                 {secao.titulo}
               </h2>
@@ -91,19 +98,21 @@ export default async function ServicoPage({
                   </li>
                 ))}
               </ul>
-            </div>
+            </Reveal>
           ) : null,
         )}
       </div>
 
-      <div className="mt-8">
-        <Link
-          href="/orcamento"
-          className="btn-orcamento inline-flex items-center justify-center rounded-lg px-6 py-3 text-base font-semibold"
-        >
-          Faça seu orçamento
-        </Link>
-      </div>
+      <Reveal delay={120}>
+        <div className="mt-8">
+          <Link
+            href="/orcamento"
+            className="btn-orcamento inline-flex items-center justify-center rounded-lg px-6 py-3 text-base font-semibold"
+          >
+            Faça seu orçamento
+          </Link>
+        </div>
+      </Reveal>
     </main>
   );
 }
