@@ -77,7 +77,11 @@ export function EventForm({
           />
         </Field>
 
-        <Field label="Local ou endereço" htmlFor="localEvento">
+        <Field
+          label="Local ou endereço"
+          htmlFor="localEvento"
+          dica="O deslocamento é cobrado conforme a localidade e será tratado ao finalizar o orçamento."
+        >
           <Input
             id="localEvento"
             placeholder="Endereço ou nome do espaço"

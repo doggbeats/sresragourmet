@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Navbar } from "@/components/Navbar";
+import { BotaoTopo } from "@/components/BotaoTopo";
 import { SiteFooter } from "@/components/SiteFooter";
 import "./globals.css";
 
@@ -29,6 +30,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <div className="flex-1">{children}</div>
           <SiteFooter />
         </div>
+        <BotaoTopo />
       </body>
     </html>
   );
