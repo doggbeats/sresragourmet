@@ -45,6 +45,15 @@ export const ACOMPANHAMENTOS = [
   "Batatas gratinadas",
   "Legumes salteados",
   "Salada: folhas nobres com pera e nozes",
+  "Arroz à grega",
+  "Salada tropical",
+  "Legumes na manteiga",
+  "Arroz com amêndoas",
+  "Salada especial",
+  "Batatas rústicas",
+  "Arroz branco",
+  "Macarrão alho e óleo",
+  "Farofa temperada",
 ];
 
 export interface CardapioAlmocoJantar {
