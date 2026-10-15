@@ -106,8 +106,12 @@ select option {
 }
 
 .hero-zoom {
-  animation: hero-zoom 3s ease-out both;
+  animation: hero-zoom 3s ease-out 0.5s both;
   will-change: transform;
+}
+
+.hero-foto {
+  transform-origin: center;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -22,12 +22,21 @@ export function Hero() {
         <div
           key={src}
           className={cx(
-            "hero-zoom absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat transition-opacity duration-1000",
+            "absolute inset-0 -z-10 transition-opacity duration-1000",
             indice === atual ? "opacity-100" : "opacity-0",
           )}
-          style={{ backgroundImage: `url(${src})` }}
           aria-hidden
-        />
+        >
+          <div
+            key={`${src}-${atual}`}
+            className={cx(
+              "hero-foto absolute inset-0 bg-cover bg-center bg-no-repeat",
+              indice === atual && "hero-zoom",
+            )}
+            style={{ backgroundImage: `url(${src})` }}
+            aria-hidden
+          />
+        </div>
       ))}
 
       <div className="absolute inset-0 bg-black/60" aria-hidden />
