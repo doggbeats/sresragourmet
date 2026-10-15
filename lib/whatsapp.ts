@@ -104,6 +104,9 @@ export function montarMensagemWhatsApp(estado: OrcamentoState): string {
     );
   }
   if (estado.servicos.includes("almoco-jantar")) {
+    if (estado.cardapioPronto.trim()) {
+      cardapio.push(`Cardápio pronto: ${estado.cardapioPronto.trim()}`);
+    }
     cardapio.push(
       `Prato principal: ${lista(estado.pratoPrincipal, "a confirmar pelo buffet")}`,
     );

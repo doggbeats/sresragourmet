@@ -6,6 +6,7 @@ import { BarbecueSelector } from "./BarbecueSelector";
 import { BeverageSelector } from "./BeverageSelector";
 import { EventForm } from "./EventForm";
 import { MultiItemSelector } from "./MultiItemSelector";
+import { ReadyMenuSelector } from "./ReadyMenuSelector";
 import { PastaSelector } from "./PastaSelector";
 import { QuoteSummary } from "./QuoteSummary";
 import { SavoryCrepeSelector } from "./SavoryCrepeSelector";
@@ -233,6 +234,14 @@ export function QuoteWizard() {
               <BarbecueSelector
                 selecionados={estado.churrasco}
                 onToggle={(item) => alternar("churrasco", item)}
+              />
+            ) : null}
+            {estado.servicos.includes("almoco-jantar") ? (
+              <ReadyMenuSelector
+                selecionado={estado.cardapioPronto}
+                onSelecionar={(nome) =>
+                  setEstado((atual) => ({ ...atual, cardapioPronto: nome }))
+                }
               />
             ) : null}
             {estado.servicos.includes("almoco-jantar") ? (

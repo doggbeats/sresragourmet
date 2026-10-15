@@ -146,6 +146,10 @@ export function QuoteSummary({
                 }
               />
             ) : null}
+            {estado.servicos.includes("almoco-jantar") &&
+            estado.cardapioPronto.trim() ? (
+              <Linha rotulo="Cardápio pronto" valor={estado.cardapioPronto} />
+            ) : null}
             {estado.servicos.includes("almoco-jantar") ? (
               <Linha
                 rotulo="Prato principal"
