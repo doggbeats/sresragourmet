@@ -6,6 +6,7 @@ import { BarbecueSelector } from "./BarbecueSelector";
 import { BeverageSelector } from "./BeverageSelector";
 import { DishSelector } from "./DishSelector";
 import { EventForm } from "./EventForm";
+import { MainDishSelector } from "./MainDishSelector";
 import { PastaSelector } from "./PastaSelector";
 import { QuoteSummary } from "./QuoteSummary";
 import { SavoryCrepeSelector } from "./SavoryCrepeSelector";
@@ -89,7 +90,7 @@ export function QuoteWizard() {
   }
 
   function alternar(
-    campo: "crepesSalgados" | "crepesDoces" | "massas" | "churrasco",
+    campo: "crepesSalgados" | "crepesDoces" | "massas" | "churrasco" | "pratoPrincipal",
     item: string,
   ) {
     setEstado((atual) => {
@@ -236,6 +237,12 @@ export function QuoteWizard() {
                     almocoJantar: nome ? [nome] : [],
                   }))
                 }
+              />
+            ) : null}
+            {estado.servicos.includes("almoco-jantar") ? (
+              <MainDishSelector
+                selecionados={estado.pratoPrincipal}
+                onToggle={(item) => alternar("pratoPrincipal", item)}
               />
             ) : null}
 

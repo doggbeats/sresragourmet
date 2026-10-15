@@ -70,7 +70,10 @@ export function QuoteSummary({
     );
   }
   if (estado.servicos.includes("almoco-jantar") && estado.almocoJantar.length === 0) {
-    pendencias.push("Pratos de almoço e jantar a confirmar pelo buffet.");
+    pendencias.push("Cardápio de almoço e jantar a confirmar pelo buffet.");
+  }
+  if (estado.servicos.includes("almoco-jantar") && estado.pratoPrincipal.length === 0) {
+    pendencias.push("Prato principal de almoço e jantar a confirmar pelo buffet.");
   }
   if (estado.equipe === "orientacao") {
     pendencias.push("Equipe de atendimento: cliente pediu orientação do buffet.");
@@ -148,10 +151,19 @@ export function QuoteSummary({
             ) : null}
             {estado.servicos.includes("almoco-jantar") ? (
               <Linha
-                rotulo="Almoço e jantar"
+                rotulo="Cardápio"
                 valor={
                   estado.almocoJantar.join(", ") ||
-                  "pratos a confirmar pelo buffet"
+                  "cardápio a confirmar pelo buffet"
+                }
+              />
+            ) : null}
+            {estado.servicos.includes("almoco-jantar") ? (
+              <Linha
+                rotulo="Prato principal"
+                valor={
+                  estado.pratoPrincipal.join(", ") ||
+                  "prato principal a confirmar pelo buffet"
                 }
               />
             ) : null}

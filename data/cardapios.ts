@@ -5,6 +5,7 @@ import {
   CREPES_SALGADOS,
   MASSAS_ITENS,
   MASSAS_MOLHOS,
+  PRATOS_PRINCIPAIS,
 } from "@/data/menu";
 import type { ServicoId } from "@/types/quote";
 
@@ -20,8 +21,11 @@ export const CARDAPIOS: Partial<Record<ServicoId, SecaoCardapio[]>> = {
   churrasco: [
     { titulo: "Carnes e acompanhamentos", itens: CHURRASCO_ITENS },
   ],
-  "almoco-jantar": CARDAPIOS_ALMOCO_JANTAR.map((cardapio) => ({
-    titulo: cardapio.nome,
-    itens: cardapio.itens,
-  })),
+  "almoco-jantar": [
+    ...CARDAPIOS_ALMOCO_JANTAR.map((cardapio) => ({
+      titulo: cardapio.nome,
+      itens: cardapio.itens,
+    })),
+    { titulo: "Prato principal", itens: PRATOS_PRINCIPAIS },
+  ],
 };

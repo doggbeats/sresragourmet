@@ -29,6 +29,15 @@ export const CREPES_DOCES = [
   "Coco ralado",
 ];
 
+export const PRATOS_PRINCIPAIS = [
+  "Filé-mignon ao molho madeira",
+  "Lagarto ao molho madeira",
+  "Maminha assada ao molho roti",
+  "Alcatra ao molho de ervas",
+  "Filé-mignon ao molho gorgonzola",
+  "Lagarto recheado ao molho de ervas finas",
+];
+
 export interface CardapioAlmocoJantar {
   nome: string;
   itens: string[];

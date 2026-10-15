@@ -21,8 +21,9 @@ export default function ServicosPage() {
             evento. Toque em um serviço para ver os detalhes.
           </p>
           <p className="mx-auto mt-4 max-w-xl rounded-xl border border-[#d4af37]/40 bg-[#d4af37]/10 px-4 py-3 text-sm text-[#e6c65c]">
-            Você também pode montar um cardápio ao seu gosto! Escolha os itens que
-            preferir e envie direto para o buffet.
+            Você também pode montar seu cardápio ao seu gosto ou sugerir outro
+            tipo de prato! Escolha os itens que preferir e envie direto para o
+            buffet.
           </p>
         </Reveal>
       </header>

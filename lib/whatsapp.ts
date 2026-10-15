@@ -105,7 +105,10 @@ export function montarMensagemWhatsApp(estado: OrcamentoState): string {
   }
   if (estado.servicos.includes("almoco-jantar")) {
     cardapio.push(
-      `Almoço e jantar: ${lista(estado.almocoJantar, "pratos a confirmar pelo buffet")}`,
+      `Almoço e jantar: ${lista(estado.almocoJantar, "cardápio a confirmar pelo buffet")}`,
+    );
+    cardapio.push(
+      `Prato principal: ${lista(estado.pratoPrincipal, "a confirmar pelo buffet")}`,
     );
   }
   if (estado.cardapioPersonalizado.trim()) {
