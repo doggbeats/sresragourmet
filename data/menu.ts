@@ -29,13 +29,45 @@ export const CREPES_DOCES = [
   "Coco ralado",
 ];
 
-export const ALMOCO_JANTAR_PRATOS = [
-  "Filé-mignon ao molho madeira",
-  "Lagarto ao molho madeira",
-  "Maminha assada ao molho roti",
-  "Alcatra ao molho de ervas",
-  "Filé-mignon ao molho gorgonzola",
-  "Lagarto recheado ao molho de ervas finas",
+export interface CardapioAlmocoJantar {
+  nome: string;
+  itens: string[];
+}
+
+export const CARDAPIOS_ALMOCO_JANTAR: CardapioAlmocoJantar[] = [
+  {
+    nome: "Cardápio econômico",
+    itens: [
+      "Frango ao molho de ervas",
+      "Carne assada ao molho madeira",
+      "Arroz branco",
+      "Macarrão alho e óleo",
+      "Salada tropical",
+      "Farofa temperada",
+    ],
+  },
+  {
+    nome: "Cardápio intermediário",
+    itens: [
+      "Maminha ao molho roti",
+      "Frango recheado com queijo e presunto",
+      "Arroz à grega",
+      "Batatas gratinadas",
+      "Salada tropical",
+      "Legumes na manteiga",
+    ],
+  },
+  {
+    nome: "Cardápio sofisticado",
+    itens: [
+      "Filé-mignon ao molho madeira",
+      "Salmão ao molho de maracujá",
+      "Arroz com amêndoas",
+      "Risoto de parmesão",
+      "Salada especial",
+      "Batatas rústicas",
+    ],
+  },
 ];
 
 export const MASSAS_ITENS = ["Espaguete", "Penne", "Talharim"];

@@ -1,44 +1,87 @@
 "use client";
 
-import { Info } from "lucide-react";
-import { ALMOCO_JANTAR_PRATOS } from "@/data/menu";
-import { OpcaoSelecionavel, SectionCard } from "./ui";
+import { Check, Info } from "lucide-react";
+import { CARDAPIOS_ALMOCO_JANTAR } from "@/data/menu";
+import { cx, SectionCard } from "./ui";
 
 export function DishSelector({
-  selecionados,
-  onToggle,
+  selecionado,
+  onSelecionar,
 }: {
-  selecionados: string[];
-  onToggle: (item: string) => void;
+  selecionado: string;
+  onSelecionar: (nome: string) => void;
 }) {
   return (
     <SectionCard
       titulo="Almoço e jantar"
-      descricao="Selecione os tipos de pratos desejados. Acompanhamentos são definidos pelo buffet conforme o evento."
+      descricao="Escolha um dos cardápios completos. Os acompanhamentos já estão inclusos em cada opção."
     >
-      {ALMOCO_JANTAR_PRATOS.length > 0 ? (
-        <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-          {ALMOCO_JANTAR_PRATOS.map((item) => (
-            <OpcaoSelecionavel
-              key={item}
-              ativo={selecionados.includes(item)}
-              onClick={() => onToggle(item)}
-              className="py-2.5"
-            >
-              {item}
-            </OpcaoSelecionavel>
-          ))}
+      {CARDAPIOS_ALMOCO_JANTAR.length > 0 ? (
+        <div
+          role="radiogroup"
+          aria-label="Cardápios de almoço e jantar"
+          className="grid gap-3 lg:grid-cols-3"
+        >
+          {CARDAPIOS_ALMOCO_JANTAR.map((cardapio) => {
+            const ativo = selecionado === cardapio.nome;
+            return (
+              <button
+                key={cardapio.nome}
+                type="button"
+                role="radio"
+                aria-checked={ativo}
+                onClick={() => onSelecionar(ativo ? "" : cardapio.nome)}
+                className={cx(
+                  "flex h-full w-full flex-col rounded-xl border p-4 text-left transition",
+                  ativo
+                    ? "border-accent/70 bg-accent/[0.08]"
+                    : "border-line bg-surface-2/40 hover:border-accent/40",
+                )}
+              >
+                <span className="flex items-center justify-between gap-2">
+                  <span className="font-display text-base text-accent-soft">
+                    {cardapio.nome}
+                  </span>
+                  <span
+                    className={cx(
+                      "flex h-5 w-5 shrink-0 items-center justify-center rounded-full border transition",
+                      ativo ? "border-accent bg-accent text-black" : "border-line",
+                    )}
+                  >
+                    {ativo ? (
+                      <Check className="h-3.5 w-3.5" strokeWidth={3} />
+                    ) : null}
+                  </span>
+                </span>
+                <ul className="mt-3 space-y-1">
+                  {cardapio.itens.map((item) => (
+                    <li
+                      key={item}
+                      className={cx(
+                        "flex items-start gap-1.5 text-xs leading-snug",
+                        ativo ? "text-ink" : "text-muted",
+                      )}
+                    >
+                      <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-accent/70" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </button>
+            );
+          })}
         </div>
       ) : (
         <p className="text-sm text-muted">
-          O buffet ainda não cadastrou os tipos de pratos disponíveis.
+          O buffet ainda não cadastrou os cardápios disponíveis.
         </p>
       )}
 
       <div className="mt-4 flex items-start gap-2 rounded-lg border border-line bg-surface-2/40 px-3 py-2 text-xs text-muted">
         <Info className="mt-0.5 h-4 w-4 shrink-0" />
         <span>
-          Os pratos e acompanhamentos serão confirmados pelo buffet.
+          Os itens de cada cardápio podem ser ajustados pelo buffet conforme o
+          evento.
         </span>
       </div>
     </SectionCard>

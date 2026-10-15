@@ -89,7 +89,7 @@ export function QuoteWizard() {
   }
 
   function alternar(
-    campo: "crepesSalgados" | "crepesDoces" | "massas" | "churrasco" | "almocoJantar",
+    campo: "crepesSalgados" | "crepesDoces" | "massas" | "churrasco",
     item: string,
   ) {
     setEstado((atual) => {
@@ -229,8 +229,13 @@ export function QuoteWizard() {
             ) : null}
             {estado.servicos.includes("almoco-jantar") ? (
               <DishSelector
-                selecionados={estado.almocoJantar}
-                onToggle={(item) => alternar("almocoJantar", item)}
+                selecionado={estado.almocoJantar[0] ?? ""}
+                onSelecionar={(nome) =>
+                  setEstado((atual) => ({
+                    ...atual,
+                    almocoJantar: nome ? [nome] : [],
+                  }))
+                }
               />
             ) : null}
 
