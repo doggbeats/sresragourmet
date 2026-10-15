@@ -1,4 +1,5 @@
 import {
+  ACOMPANHAMENTOS,
   CARDAPIOS_ALMOCO_JANTAR,
   CHURRASCO_ITENS,
   CREPES_DOCES,
@@ -27,5 +28,6 @@ export const CARDAPIOS: Partial<Record<ServicoId, SecaoCardapio[]>> = {
       itens: cardapio.itens,
     })),
     { titulo: "Prato principal", itens: PRATOS_PRINCIPAIS },
+    { titulo: "Acompanhamentos", itens: ACOMPANHAMENTOS },
   ],
 };

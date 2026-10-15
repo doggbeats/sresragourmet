@@ -21,6 +21,7 @@ export function criarEstadoInicial(): OrcamentoState {
     churrasco: [],
     almocoJantar: [],
     pratoPrincipal: [],
+    acompanhamentos: [],
     cardapioPersonalizado: "",
     incluirBebidas: false,
     bebidas: [],

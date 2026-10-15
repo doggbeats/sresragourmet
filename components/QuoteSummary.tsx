@@ -167,6 +167,15 @@ export function QuoteSummary({
                 }
               />
             ) : null}
+            {estado.servicos.includes("almoco-jantar") ? (
+              <Linha
+                rotulo="Acompanhamentos"
+                valor={
+                  estado.acompanhamentos.join(", ") ||
+                  "acompanhamentos a confirmar pelo buffet"
+                }
+              />
+            ) : null}
             {estado.cardapioPersonalizado.trim() ? (
               <Linha
                 rotulo="Sugestões"

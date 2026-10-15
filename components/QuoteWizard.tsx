@@ -6,7 +6,7 @@ import { BarbecueSelector } from "./BarbecueSelector";
 import { BeverageSelector } from "./BeverageSelector";
 import { DishSelector } from "./DishSelector";
 import { EventForm } from "./EventForm";
-import { MainDishSelector } from "./MainDishSelector";
+import { MultiItemSelector } from "./MultiItemSelector";
 import { PastaSelector } from "./PastaSelector";
 import { QuoteSummary } from "./QuoteSummary";
 import { SavoryCrepeSelector } from "./SavoryCrepeSelector";
@@ -22,6 +22,7 @@ import {
   parseConvidados,
   resumirBebidas,
 } from "@/lib/quote";
+import { ACOMPANHAMENTOS, PRATOS_PRINCIPAIS } from "@/data/menu";
 import { validarDadosEvento, validarServicos, type ErrosOrcamento } from "@/lib/validation";
 import { gerarLinkWhatsApp, montarMensagemWhatsApp, whatsappConfigurado } from "@/lib/whatsapp";
 import type {
@@ -90,7 +91,13 @@ export function QuoteWizard() {
   }
 
   function alternar(
-    campo: "crepesSalgados" | "crepesDoces" | "massas" | "churrasco" | "pratoPrincipal",
+    campo:
+      | "crepesSalgados"
+      | "crepesDoces"
+      | "massas"
+      | "churrasco"
+      | "pratoPrincipal"
+      | "acompanhamentos",
     item: string,
   ) {
     setEstado((atual) => {
@@ -240,9 +247,25 @@ export function QuoteWizard() {
               />
             ) : null}
             {estado.servicos.includes("almoco-jantar") ? (
-              <MainDishSelector
+              <MultiItemSelector
+                titulo="Prato principal"
+                descricao="Escolha os pratos principais de sua preferência para o almoço ou jantar."
+                dica="Os pratos principais serão confirmados pelo buffet."
+                vazio="O buffet ainda não cadastrou os pratos principais disponíveis."
+                itens={PRATOS_PRINCIPAIS}
                 selecionados={estado.pratoPrincipal}
                 onToggle={(item) => alternar("pratoPrincipal", item)}
+              />
+            ) : null}
+            {estado.servicos.includes("almoco-jantar") ? (
+              <MultiItemSelector
+                titulo="Acompanhamentos"
+                descricao="Selecione os acompanhamentos que deseja incluir."
+                dica="Os acompanhamentos serão confirmados pelo buffet."
+                vazio="O buffet ainda não cadastrou os acompanhamentos disponíveis."
+                itens={ACOMPANHAMENTOS}
+                selecionados={estado.acompanhamentos}
+                onToggle={(item) => alternar("acompanhamentos", item)}
               />
             ) : null}
 

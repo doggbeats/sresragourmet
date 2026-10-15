@@ -36,6 +36,15 @@ export const PRATOS_PRINCIPAIS = [
   "Alcatra ao molho de ervas",
   "Filé-mignon ao molho gorgonzola",
   "Lagarto recheado ao molho de ervas finas",
+  "Medalhão de filé-mignon ao molho de vinho tinto",
+  "Filé de frango ao molho de ervas finas",
+];
+
+export const ACOMPANHAMENTOS = [
+  "Risoto de parmesão",
+  "Batatas gratinadas",
+  "Legumes salteados",
+  "Salada: folhas nobres com pera e nozes",
 ];
 
 export interface CardapioAlmocoJantar {
