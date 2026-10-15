@@ -20,7 +20,7 @@ export function DishSelector({
         <div
           role="radiogroup"
           aria-label="Cardápios de almoço e jantar"
-          className="grid gap-3 lg:grid-cols-3"
+          className="grid gap-3"
         >
           {CARDAPIOS_ALMOCO_JANTAR.map((cardapio) => {
             const ativo = selecionado === cardapio.nome;
