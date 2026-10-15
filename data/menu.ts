@@ -59,6 +59,15 @@ export const SALADAS = [
   "Salada: folhas nobres com pera e nozes",
 ];
 
+export const SOBREMESAS = [
+  "Pudim de leite condensado",
+  "Mousse de maracujá",
+  "Bolo de chocolate",
+  "Salada de frutas",
+  "Torta de limão",
+  "Sorvete",
+];
+
 export interface CardapioAlmocoJantar {
   nome: string;
   itens: string[];

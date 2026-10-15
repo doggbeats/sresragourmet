@@ -10,8 +10,8 @@ import { BUFFET, IDENTIFICADOR_BUFFET, NOME_BUFFET } from "@/lib/buffet";
 
 const LINKS = [
   { href: "/", label: "Início" },
-  { href: "/sobre", label: "Buffet" },
-  { href: "/servicos", label: "Serviços" },
+  { href: "/sobre", label: "Quem somos" },
+  { href: "/servicos", label: "Buffet" },
   { href: "/galeria", label: "Galeria" },
   { href: "/contato", label: "Contatos" },
   { href: "/orcamento", label: "Orçamentos" },
@@ -98,6 +98,7 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={
+                  "whitespace-nowrap " +
                   (ativo
                     ? "relative text-lg font-semibold text-accent-soft after:absolute after:-bottom-1.5 after:left-0 after:h-0.5 after:w-full after:rounded-full after:bg-accent"
                     : "relative text-lg font-medium text-muted transition after:absolute after:-bottom-1.5 after:left-0 after:h-0.5 after:w-0 after:rounded-full after:bg-accent after:transition-all after:duration-300 hover:text-accent hover:after:w-full") +

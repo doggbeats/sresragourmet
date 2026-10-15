@@ -8,6 +8,7 @@ import {
   MASSAS_MOLHOS,
   PRATOS_PRINCIPAIS,
   SALADAS,
+  SOBREMESAS,
 } from "@/data/menu";
 import type { ServicoId } from "@/types/quote";
 
@@ -31,5 +32,6 @@ export const CARDAPIOS: Partial<Record<ServicoId, SecaoCardapio[]>> = {
     { titulo: "Prato principal", itens: PRATOS_PRINCIPAIS },
     { titulo: "Acompanhamentos", itens: ACOMPANHAMENTOS },
     { titulo: "Saladas", itens: SALADAS },
+    { titulo: "Sobremesas", itens: SOBREMESAS },
   ],
 };

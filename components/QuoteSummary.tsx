@@ -176,6 +176,15 @@ export function QuoteSummary({
                 }
               />
             ) : null}
+            {estado.servicos.includes("almoco-jantar") ? (
+              <Linha
+                rotulo="Sobremesas"
+                valor={
+                  estado.sobremesas.join(", ") ||
+                  "sobremesas a confirmar pelo buffet"
+                }
+              />
+            ) : null}
             {estado.cardapioPersonalizado.trim() ? (
               <Linha
                 rotulo="Sugestões"

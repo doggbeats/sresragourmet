@@ -23,6 +23,7 @@ export function criarEstadoInicial(): OrcamentoState {
     pratoPrincipal: [],
     acompanhamentos: [],
     saladas: [],
+    sobremesas: [],
     cardapioPersonalizado: "",
     incluirBebidas: false,
     bebidas: [],

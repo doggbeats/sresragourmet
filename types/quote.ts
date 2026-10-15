@@ -89,6 +89,7 @@ export interface OrcamentoState {
   pratoPrincipal: string[];
   acompanhamentos: string[];
   saladas: string[];
+  sobremesas: string[];
   cardapioPersonalizado: string;
   incluirBebidas: boolean;
   bebidas: string[];
