@@ -12,7 +12,7 @@ import { ServiceSelector } from "./ServiceSelector";
 import { StaffSelector } from "./StaffSelector";
 import { StepIndicator } from "./StepIndicator";
 import { SweetCrepeSelector } from "./SweetCrepeSelector";
-import { Button } from "./ui";
+import { Button, Field, SectionCard, TextArea } from "./ui";
 import {
   alternarLista,
   alternarServico,
@@ -181,11 +181,33 @@ export function QuoteWizard() {
         ) : null}
 
         {passo === 1 ? (
-          <ServiceSelector
-            selecionados={estado.servicos}
-            onToggle={toggleServico}
-            erro={erros.servicos}
-          />
+          <div className="space-y-6">
+            <ServiceSelector
+              selecionados={estado.servicos}
+              onToggle={toggleServico}
+              erro={erros.servicos}
+            />
+
+            <SectionCard
+              titulo="Monte seu cardápio"
+              descricao="Descreva combinações ou itens que você gostaria de incluir no cardápio."
+            >
+              <Field label="Sugestões de cardápio" htmlFor="cardapioPersonalizado">
+                <TextArea
+                  id="cardapioPersonalizado"
+                  rows={4}
+                  placeholder="Ex.: crepe de frango com catupiry, massa ao molho branco com camarão..."
+                  value={estado.cardapioPersonalizado}
+                  onChange={(event) =>
+                    setEstado((atual) => ({
+                      ...atual,
+                      cardapioPersonalizado: event.target.value,
+                    }))
+                  }
+                />
+              </Field>
+            </SectionCard>
+          </div>
         ) : null}
 
         {passo === 2 ? (

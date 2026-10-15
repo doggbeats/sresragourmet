@@ -18,6 +18,10 @@ export default function ServicosPage() {
           Tudo preparado na hora, com os detalhes que você escolher para o seu
           evento. Toque em um serviço para ver os detalhes.
         </p>
+        <p className="mx-auto mt-4 max-w-xl rounded-xl border border-[#d4af37]/40 bg-[#d4af37]/10 px-4 py-3 text-sm text-[#e6c65c]">
+          Você também pode montar um cardápio ao seu gosto! Escolha os itens que
+          preferir e envie direto para o buffet.
+        </p>
       </header>
 
       <ServicosGrid />

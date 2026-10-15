@@ -84,6 +84,18 @@ select option {
   color: #000000;
 }
 
+.nav-orcamento {
+  color: #d4af37;
+}
+
+.nav-orcamento:hover {
+  color: #e6c65c;
+}
+
+.nav-orcamento::after {
+  background-color: #d4af37;
+}
+
 @keyframes hero-zoom {
   from {
     transform: scale(1.2);

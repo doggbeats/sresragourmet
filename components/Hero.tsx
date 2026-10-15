@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { cx } from "./ui";
 
-const IMAGENS = ["/churrasco.jpg", "/salgados.jpg", "/pene.jpg"];
+const IMAGENS = ["/salgados.jpg", "/pene.jpg", "/jantares.webp"];
 
 export function Hero() {
   const [atual, setAtual] = useState(0);

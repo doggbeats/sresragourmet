@@ -106,6 +106,9 @@ export function montarMensagemWhatsApp(estado: OrcamentoState): string {
       `Churrasco: ${lista(estado.churrasco, "carnes e acompanhamentos a confirmar pelo buffet")}`,
     );
   }
+  if (estado.cardapioPersonalizado.trim()) {
+    cardapio.push(`Sugestões do cliente: ${estado.cardapioPersonalizado.trim()}`);
+  }
   if (cardapio.length === 0) {
     linhas.push("Não informado.");
   } else {

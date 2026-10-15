@@ -143,6 +143,12 @@ export function QuoteSummary({
                 }
               />
             ) : null}
+            {estado.cardapioPersonalizado.trim() ? (
+              <Linha
+                rotulo="Sugestões"
+                valor={estado.cardapioPersonalizado.trim()}
+              />
+            ) : null}
           </dl>
         </Bloco>
 
