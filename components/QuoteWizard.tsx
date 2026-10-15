@@ -4,7 +4,6 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { BarbecueSelector } from "./BarbecueSelector";
 import { BeverageSelector } from "./BeverageSelector";
-import { DishSelector } from "./DishSelector";
 import { EventForm } from "./EventForm";
 import { MultiItemSelector } from "./MultiItemSelector";
 import { PastaSelector } from "./PastaSelector";
@@ -96,7 +95,6 @@ export function QuoteWizard() {
       | "crepesDoces"
       | "massas"
       | "churrasco"
-      | "almocoJantar"
       | "pratoPrincipal"
       | "acompanhamentos",
     item: string,
@@ -234,29 +232,6 @@ export function QuoteWizard() {
               <BarbecueSelector
                 selecionados={estado.churrasco}
                 onToggle={(item) => alternar("churrasco", item)}
-              />
-            ) : null}
-            {estado.servicos.includes("almoco-jantar") ? (
-              <DishSelector
-                selecionados={estado.almocoJantar}
-                onToggle={(item) => alternar("almocoJantar", item)}
-                onSelecionarCardapio={(itens) =>
-                  setEstado((atual) => {
-                    const todosSelecionados = itens.every((item) =>
-                      atual.almocoJantar.includes(item),
-                    );
-                    return {
-                      ...atual,
-                      almocoJantar: todosSelecionados
-                        ? atual.almocoJantar.filter(
-                            (item) => !itens.includes(item),
-                          )
-                        : Array.from(
-                            new Set([...atual.almocoJantar, ...itens]),
-                          ),
-                    };
-                  })
-                }
               />
             ) : null}
             {estado.servicos.includes("almoco-jantar") ? (

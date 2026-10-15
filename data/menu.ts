@@ -88,10 +88,6 @@ export const CARDAPIOS_ALMOCO_JANTAR: CardapioAlmocoJantar[] = [
   },
 ];
 
-export const ITENS_ALMOCO_JANTAR: string[] = Array.from(
-  new Set(CARDAPIOS_ALMOCO_JANTAR.flatMap((cardapio) => cardapio.itens)),
-);
-
 export const MASSAS_ITENS = ["Espaguete", "Penne", "Talharim"];
 
 export const MASSAS_MOLHOS: string[] = [];
