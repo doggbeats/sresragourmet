@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { InstagramIcon, WhatsAppIcon } from "@/components/icons";
 import { Reveal } from "@/components/Reveal";
 import {
@@ -19,8 +19,6 @@ export const metadata: Metadata = {
 function IconeContato({ rotulo }: { rotulo: string }) {
   const classe = "h-5 w-5";
   switch (rotulo) {
-    case "Telefone":
-      return <Phone className={classe} />;
     case "WhatsApp":
       return <WhatsAppIcon className={classe} />;
     case "Instagram":
@@ -51,18 +49,19 @@ export default function ContatoPage() {
         </Reveal>
       </header>
 
-      <div className="mt-8 space-y-3">
+      <div className="mt-8 grid gap-4 sm:grid-cols-2">
         {contatos.map((contato, indice) => {
+          const classe = "flex h-full flex-col items-start gap-3 rounded-2xl border border-line bg-surface/70 p-5 transition hover:border-accent/40";
           const conteudo = (
             <>
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line bg-surface-2 text-accent-soft">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-line bg-surface-2 text-accent-soft">
                 <IconeContato rotulo={contato.rotulo} />
               </span>
               <span className="min-w-0">
                 <span className="block text-xs uppercase tracking-wide text-muted">
                   {contato.rotulo}
                 </span>
-                <span className="block truncate text-sm text-ink">
+                <span className="mt-1 block break-words text-sm text-ink">
                   {contato.valor}
                 </span>
               </span>
@@ -76,14 +75,12 @@ export default function ContatoPage() {
                   href={contato.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 rounded-2xl border border-line bg-surface/70 px-4 py-3 transition hover:border-accent/40"
+                  className={classe}
                 >
                   {conteudo}
                 </a>
               ) : (
-                <div className="flex items-center gap-3 rounded-2xl border border-line bg-surface/70 px-4 py-3">
-                  {conteudo}
-                </div>
+                <div className={classe}>{conteudo}</div>
               )}
             </Reveal>
           );

@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { BarbecueSelector } from "./BarbecueSelector";
 import { BeverageSelector } from "./BeverageSelector";
+import { DishSelector } from "./DishSelector";
 import { EventForm } from "./EventForm";
 import { PastaSelector } from "./PastaSelector";
 import { QuoteSummary } from "./QuoteSummary";
@@ -87,7 +88,10 @@ export function QuoteWizard() {
     setAviso(null);
   }
 
-  function alternar(campo: "crepesSalgados" | "crepesDoces" | "massas" | "churrasco", item: string) {
+  function alternar(
+    campo: "crepesSalgados" | "crepesDoces" | "massas" | "churrasco" | "almocoJantar",
+    item: string,
+  ) {
     setEstado((atual) => {
       const copia = { ...atual };
       copia[campo] = alternarLista(atual[campo], item);
@@ -181,33 +185,11 @@ export function QuoteWizard() {
         ) : null}
 
         {passo === 1 ? (
-          <div className="space-y-6">
-            <ServiceSelector
-              selecionados={estado.servicos}
-              onToggle={toggleServico}
-              erro={erros.servicos}
-            />
-
-            <SectionCard
-              titulo="Monte seu cardápio"
-              descricao="Descreva combinações ou itens que você gostaria de incluir no cardápio."
-            >
-              <Field label="Sugestões de cardápio" htmlFor="cardapioPersonalizado">
-                <TextArea
-                  id="cardapioPersonalizado"
-                  rows={4}
-                  placeholder="Ex.: crepe de frango com catupiry, massa ao molho branco com camarão..."
-                  value={estado.cardapioPersonalizado}
-                  onChange={(event) =>
-                    setEstado((atual) => ({
-                      ...atual,
-                      cardapioPersonalizado: event.target.value,
-                    }))
-                  }
-                />
-              </Field>
-            </SectionCard>
-          </div>
+          <ServiceSelector
+            selecionados={estado.servicos}
+            onToggle={toggleServico}
+            erro={erros.servicos}
+          />
         ) : null}
 
         {passo === 2 ? (
@@ -245,6 +227,32 @@ export function QuoteWizard() {
                 onToggle={(item) => alternar("churrasco", item)}
               />
             ) : null}
+            {estado.servicos.includes("almoco-jantar") ? (
+              <DishSelector
+                selecionados={estado.almocoJantar}
+                onToggle={(item) => alternar("almocoJantar", item)}
+              />
+            ) : null}
+
+            <SectionCard
+              titulo="Não encontrou o que procura?"
+              descricao="Descreva pratos ou combinações que você deseja e que não estão na lista. Nós avaliamos a inclusão."
+            >
+              <Field label="Cardápio desejado" htmlFor="cardapioPersonalizado">
+                <TextArea
+                  id="cardapioPersonalizado"
+                  rows={4}
+                  placeholder="Ex.: crepe de frango com catupiry, massa ao molho branco com camarão..."
+                  value={estado.cardapioPersonalizado}
+                  onChange={(event) =>
+                    setEstado((atual) => ({
+                      ...atual,
+                      cardapioPersonalizado: event.target.value,
+                    }))
+                  }
+                />
+              </Field>
+            </SectionCard>
           </div>
         ) : null}
 

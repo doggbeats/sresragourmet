@@ -42,9 +42,6 @@ export function montarMensagemWhatsApp(estado: OrcamentoState): string {
   linhas.push(`*${NOME_BUFFET}*`);
   linhas.push(IDENTIFICADOR_BUFFET);
   const contatos: string[] = [];
-  if (BUFFET.telefone.trim()) {
-    contatos.push(`📞 ${BUFFET.telefone.trim()}`);
-  }
   if (BUFFET.instagram.trim()) {
     contatos.push(`📱 ${BUFFET.instagram.trim()}`);
   }
@@ -104,6 +101,11 @@ export function montarMensagemWhatsApp(estado: OrcamentoState): string {
   if (estado.servicos.includes("churrasco")) {
     cardapio.push(
       `Churrasco: ${lista(estado.churrasco, "carnes e acompanhamentos a confirmar pelo buffet")}`,
+    );
+  }
+  if (estado.servicos.includes("almoco-jantar")) {
+    cardapio.push(
+      `Almoço e jantar: ${lista(estado.almocoJantar, "pratos a confirmar pelo buffet")}`,
     );
   }
   if (estado.cardapioPersonalizado.trim()) {

@@ -28,7 +28,7 @@ export const SERVICOS: ServicoInfo[] = [
   {
     id: "churrasco",
     nome: "Churrasco completo",
-    descricao: "Carnes selecionadas, acompanhamentos deliciosos e aquele churrasco preparado na hora para reunir seus convidados. A escolha perfeita para aniversários, confraternizações e momentos especiais, com sabor e qualidade em cada detalhe.",
+    descricao: "Carnes selecionadas, acompanhamentos deliciosos e aquele churrasco preparado na hora para reunir seus convidados.",
     imagem: "/churrasco.jpg",
     precoPorPessoa: null,
     precoPacote: null,

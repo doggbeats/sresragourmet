@@ -69,6 +69,9 @@ export function QuoteSummary({
       "Carnes e acompanhamentos do churrasco a confirmar pelo buffet.",
     );
   }
+  if (estado.servicos.includes("almoco-jantar") && estado.almocoJantar.length === 0) {
+    pendencias.push("Pratos de almoço e jantar a confirmar pelo buffet.");
+  }
   if (estado.equipe === "orientacao") {
     pendencias.push("Equipe de atendimento: cliente pediu orientação do buffet.");
   }
@@ -140,6 +143,15 @@ export function QuoteSummary({
                 valor={
                   estado.churrasco.join(", ") ||
                   "carnes e acompanhamentos a confirmar pelo buffet"
+                }
+              />
+            ) : null}
+            {estado.servicos.includes("almoco-jantar") ? (
+              <Linha
+                rotulo="Almoço e jantar"
+                valor={
+                  estado.almocoJantar.join(", ") ||
+                  "pratos a confirmar pelo buffet"
                 }
               />
             ) : null}

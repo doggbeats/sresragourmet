@@ -10,6 +10,7 @@ import { BUFFET, IDENTIFICADOR_BUFFET, NOME_BUFFET } from "@/lib/buffet";
 
 const LINKS = [
   { href: "/", label: "Início" },
+  { href: "/sobre", label: "Buffet" },
   { href: "/servicos", label: "Serviços" },
   { href: "/galeria", label: "Galeria" },
   { href: "/contato", label: "Contatos" },
@@ -88,7 +89,7 @@ export function Navbar() {
           </span>
         </Link>
 
-        <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 md:flex">
+        <nav className="absolute left-[58%] hidden -translate-x-1/2 items-center gap-8 md:flex">
           {LINKS.map((link) => {
             const ativo = ehAtivo(link.href);
             const ehOrcamento = link.href === "/orcamento";

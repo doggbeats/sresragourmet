@@ -1,4 +1,5 @@
 import {
+  ALMOCO_JANTAR_PRATOS,
   CHURRASCO_ITENS,
   CREPES_DOCES,
   CREPES_SALGADOS,
@@ -18,5 +19,8 @@ export const CARDAPIOS: Partial<Record<ServicoId, SecaoCardapio[]>> = {
   ],
   churrasco: [
     { titulo: "Carnes e acompanhamentos", itens: CHURRASCO_ITENS },
+  ],
+  "almoco-jantar": [
+    { titulo: "Tipos de pratos", itens: ALMOCO_JANTAR_PRATOS },
   ],
 };

@@ -29,6 +29,15 @@ export const CREPES_DOCES = [
   "Coco ralado",
 ];
 
+export const ALMOCO_JANTAR_PRATOS = [
+  "Filé-mignon ao molho madeira",
+  "Lagarto ao molho madeira",
+  "Maminha assada ao molho roti",
+  "Alcatra ao molho de ervas",
+  "Filé-mignon ao molho gorgonzola",
+  "Lagarto recheado ao molho de ervas finas",
+];
+
 export const MASSAS_ITENS = ["Espaguete", "Penne", "Talharim"];
 
 export const MASSAS_MOLHOS: string[] = [];
@@ -39,11 +48,17 @@ export const CHURRASCO_ITENS = [
   "Mandioca",
   "Farofa",
   "Picanha",
-  "Costela",
-  "Fraldinha",
-  "Maminha",
   "Alcatra",
-  "Linguicinha",
-  "Frango",
+  "Maminha",
+  "Fraldinha",
+  "Contra filé",
   "Cupim",
+  "Costela",
+  "Linguiça de frango",
+  "Linguiça suína",
+  "Linguiça apimentada",
+  "Chuleta",
+  "Panceta",
+  "Asinha de frango",
+  "Coxinha da asa",
 ];

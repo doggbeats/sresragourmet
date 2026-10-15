@@ -1,5 +1,4 @@
 export interface BuffetInfo {
-  telefone: string;
   whatsapp: string;
   endereco: string;
   instagram: string;
@@ -14,7 +13,6 @@ export const ESPECIALIDADES =
 export const IMAGEM_FUNDO_HOME = "/salgados.jpg";
 
 export const BUFFET: BuffetInfo = {
-  telefone: "61 995999771",
   whatsapp: "61 995999771",
   endereco: "",
   instagram: "@sresrtagourmet.buffet",
@@ -29,15 +27,6 @@ export interface ContatoBuffet {
 
 export function obterContatos(buffet: BuffetInfo): ContatoBuffet[] {
   const contatos: ContatoBuffet[] = [];
-
-  if (buffet.telefone.trim()) {
-    const digitos = buffet.telefone.replace(/\D/g, "");
-    contatos.push({
-      rotulo: "Telefone",
-      valor: buffet.telefone.trim(),
-      href: digitos ? `tel:+${digitos}` : undefined,
-    });
-  }
 
   if (buffet.whatsapp.trim()) {
     const digitos = buffet.whatsapp.replace(/\D/g, "");

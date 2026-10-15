@@ -85,6 +85,7 @@ export interface OrcamentoState {
   crepesDoces: string[];
   massas: string[];
   churrasco: string[];
+  almocoJantar: string[];
   cardapioPersonalizado: string;
   incluirBebidas: boolean;
   bebidas: string[];
