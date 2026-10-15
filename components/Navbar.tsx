@@ -110,7 +110,9 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <RedesSociais />
+          <div className="hidden md:flex">
+            <RedesSociais />
+          </div>
 
           <button
             type="button"
@@ -145,6 +147,13 @@ export function Navbar() {
               {link.label}
             </Link>
           ))}
+
+          <div className="mt-2 flex items-center gap-3 border-t border-line/70 px-3 pb-3 pt-4">
+            <span className="text-xs uppercase tracking-wide text-muted">
+              Redes sociais
+            </span>
+            <RedesSociais />
+          </div>
         </nav>
       ) : null}
     </header>
