@@ -63,7 +63,7 @@ export default function SobrePage() {
       <Reveal delay={80}>
         <div className="relative mx-auto mt-8 aspect-[4/5] w-full max-w-sm overflow-hidden rounded-2xl border border-line">
           <Image
-            src="/buffet.png"
+            src="/buffet.jpg"
             alt={NOME_BUFFET}
             fill
             priority
