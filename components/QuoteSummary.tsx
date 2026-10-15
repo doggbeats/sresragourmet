@@ -1,6 +1,6 @@
 "use client";
 
-import { AlertCircle, MessageCircle, Pencil } from "lucide-react";
+import { AlertCircle, MessageCircle, Pencil, ShieldCheck } from "lucide-react";
 import type { ReactNode } from "react";
 import { FUNCOES_EQUIPE, SERVICOS } from "@/data/services";
 import { formatarQuantidade } from "@/lib/beverage-calculator";
@@ -248,6 +248,15 @@ export function QuoteSummary({
           enviá-la.
         </p>
       )}
+
+      <div className="mt-4 flex items-start gap-2.5 rounded-lg border border-[#d4af37]/30 bg-[#d4af37]/[0.06] px-3 py-2.5 text-xs text-muted">
+        <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-accent-soft" />
+        <p>
+          Suas informações são usadas apenas para montar este orçamento. Nada é
+          armazenado em nossos servidores — a mensagem é enviada diretamente
+          pelo seu WhatsApp.
+        </p>
+      </div>
     </SectionCard>
   );
 }

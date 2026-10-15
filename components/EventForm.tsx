@@ -1,5 +1,6 @@
 "use client";
 
+import { Lock } from "lucide-react";
 import { TIPOS_EVENTO } from "@/data/services";
 import type { DadosEvento } from "@/types/quote";
 import type { ErrosOrcamento } from "@/lib/validation";
@@ -77,17 +78,17 @@ export function EventForm({
           />
         </Field>
 
-        <Field
-          label="Local ou endereço"
-          htmlFor="localEvento"
-          dica="O deslocamento é cobrado conforme a localidade e será tratado ao finalizar o orçamento."
-        >
+        <Field label="Local ou endereço" htmlFor="localEvento">
           <Input
             id="localEvento"
             placeholder="Endereço ou nome do espaço"
             value={dados.localEvento}
             onChange={(event) => onChange("localEvento", event.target.value)}
           />
+          <span className="text-xs font-medium text-[#e6c65c]">
+            O deslocamento é cobrado conforme a localidade e será tratado ao
+            finalizar o orçamento.
+          </span>
         </Field>
 
         <Field
@@ -115,6 +116,14 @@ export function EventForm({
             />
           </Field>
         </div>
+      </div>
+
+      <div className="mt-5 flex items-start gap-2.5 rounded-lg border border-line bg-surface-2/50 px-3 py-2.5 text-xs text-muted">
+        <Lock className="mt-0.5 h-4 w-4 shrink-0 text-accent-soft" />
+        <p>
+          Seus dados são usados apenas para preparar o orçamento e não ficam
+          armazenados no site. A solicitação é enviada por você, pelo WhatsApp.
+        </p>
       </div>
     </SectionCard>
   );
