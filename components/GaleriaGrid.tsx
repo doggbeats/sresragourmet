@@ -7,22 +7,35 @@ import { Reveal } from "./Reveal";
 import { cx } from "./ui";
 
 export function GaleriaGrid({ fotos }: { fotos: string[] }) {
-  const [aberta, setAberta] = useState<string | null>(null);
+  const [indiceAberto, setIndiceAberto] = useState<number | null>(null);
   const [ativo, setAtivo] = useState(0);
   const trilhaRef = useRef<HTMLDivElement>(null);
+  const toqueRef = useRef<number | null>(null);
 
   useEffect(() => {
-    if (!aberta) {
+    if (indiceAberto === null) {
       return;
     }
     const aoTeclar = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setAberta(null);
+        setIndiceAberto(null);
+      } else if (event.key === "ArrowRight") {
+        setIndiceAberto((i) => (i === null ? i : (i + 1) % fotos.length));
+      } else if (event.key === "ArrowLeft") {
+        setIndiceAberto((i) =>
+          i === null ? i : (i - 1 + fotos.length) % fotos.length,
+        );
       }
     };
     window.addEventListener("keydown", aoTeclar);
     return () => window.removeEventListener("keydown", aoTeclar);
-  }, [aberta]);
+  }, [indiceAberto, fotos.length]);
+
+  const irLightbox = (delta: number) => {
+    setIndiceAberto((i) =>
+      i === null ? i : (i + delta + fotos.length) % fotos.length,
+    );
+  };
 
   const irPara = (destino: number) => {
     const trilha = trilhaRef.current;
@@ -43,6 +56,8 @@ export function GaleriaGrid({ fotos }: { fotos: string[] }) {
     setAtivo((anterior) => (anterior === indice ? anterior : indice));
   };
 
+  const fotoAberta = indiceAberto === null ? null : fotos[indiceAberto];
+
   return (
     <>
       <div
@@ -58,7 +73,7 @@ export function GaleriaGrid({ fotos }: { fotos: string[] }) {
           >
             <button
               type="button"
-              onClick={() => setAberta(src)}
+              onClick={() => setIndiceAberto(indice)}
               className="group relative block aspect-square w-full overflow-hidden rounded-2xl border border-line bg-surface/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50"
             >
               <Image
@@ -81,7 +96,8 @@ export function GaleriaGrid({ fotos }: { fotos: string[] }) {
           aria-label="Foto anterior"
           className={cx(
             "flex h-10 w-10 items-center justify-center rounded-full border border-line bg-surface/70 text-muted transition hover:border-accent/40 hover:text-accent-soft",
-            ativo === 0 && "cursor-default opacity-40 hover:border-line hover:text-muted",
+            ativo === 0 &&
+              "cursor-default opacity-40 hover:border-line hover:text-muted",
           )}
         >
           <ChevronLeft className="h-5 w-5" />
@@ -104,31 +120,81 @@ export function GaleriaGrid({ fotos }: { fotos: string[] }) {
         </button>
       </div>
 
-      {aberta ? (
+      {fotoAberta ? (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm"
-          onClick={() => setAberta(null)}
+          onClick={() => setIndiceAberto(null)}
+          onTouchStart={(event) => {
+            toqueRef.current = event.touches[0]?.clientX ?? null;
+          }}
+          onTouchEnd={(event) => {
+            const inicio = toqueRef.current;
+            toqueRef.current = null;
+            if (inicio === null) {
+              return;
+            }
+            const delta = (event.changedTouches[0]?.clientX ?? inicio) - inicio;
+            if (Math.abs(delta) > 40) {
+              irLightbox(delta > 0 ? -1 : 1);
+            }
+          }}
         >
           <button
             type="button"
-            onClick={() => setAberta(null)}
+            onClick={() => setIndiceAberto(null)}
             aria-label="Fechar"
             className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-white/25 bg-black/50 text-white transition hover:bg-black/70"
           >
             <X className="h-5 w-5" />
           </button>
+
+          {fotos.length > 1 ? (
+            <button
+              type="button"
+              onClick={(event) => {
+                event.stopPropagation();
+                irLightbox(-1);
+              }}
+              aria-label="Foto anterior"
+              className="absolute left-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/25 bg-black/50 text-white transition hover:bg-black/70 sm:left-6"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+          ) : null}
+
           <div
             className="relative h-[80vh] w-full max-w-4xl"
             onClick={(event) => event.stopPropagation()}
           >
             <Image
-              src={aberta}
+              key={fotoAberta}
+              src={fotoAberta}
               alt=""
               fill
               sizes="100vw"
               className="animate-[galeria-zoom_300ms_ease-out] object-contain"
             />
           </div>
+
+          {fotos.length > 1 ? (
+            <button
+              type="button"
+              onClick={(event) => {
+                event.stopPropagation();
+                irLightbox(1);
+              }}
+              aria-label="Próxima foto"
+              className="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/25 bg-black/50 text-white transition hover:bg-black/70 sm:right-6"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          ) : null}
+
+          {fotos.length > 1 ? (
+            <span className="absolute bottom-5 left-1/2 -translate-x-1/2 rounded-full bg-black/60 px-3 py-1 text-xs text-white">
+              {(indiceAberto ?? 0) + 1} / {fotos.length}
+            </span>
+          ) : null}
         </div>
       ) : null}
     </>
