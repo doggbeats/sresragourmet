@@ -50,6 +50,12 @@ export function SiteFooter() {
         <p className="text-xs text-muted/60">
           © {NOME_BUFFET}. Todos os direitos reservados.
         </p>
+
+        <div className="mt-2 border-t border-line/60 pt-5 text-center">
+          <p className="text-xs text-muted/60">
+            Site desenvolvido pela code_ph_sd
+          </p>
+        </div>
       </div>
     </footer>
   );
