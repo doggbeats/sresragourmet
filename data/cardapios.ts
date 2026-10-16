@@ -12,7 +12,11 @@ import {
 } from "@/data/menu";
 import type { ServicoId } from "@/types/quote";
 
-export type SecaoCardapio = { titulo: string; itens: string[] };
+export type SecaoCardapio = {
+  titulo: string;
+  itens: string[];
+  imagem?: string;
+};
 
 export const CARDAPIOS: Partial<Record<ServicoId, SecaoCardapio[]>> = {
   "crepe-salgado": [{ titulo: "Ingredientes", itens: CREPES_SALGADOS }],
@@ -28,6 +32,7 @@ export const CARDAPIOS: Partial<Record<ServicoId, SecaoCardapio[]>> = {
     ...CARDAPIOS_ALMOCO_JANTAR.map((cardapio) => ({
       titulo: cardapio.nome,
       itens: cardapio.itens,
+      imagem: cardapio.imagem,
     })),
     { titulo: "Prato principal", itens: PRATOS_PRINCIPAIS },
     { titulo: "Acompanhamentos", itens: ACOMPANHAMENTOS },

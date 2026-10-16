@@ -71,11 +71,13 @@ export const SOBREMESAS = [
 export interface CardapioAlmocoJantar {
   nome: string;
   itens: string[];
+  imagem?: string;
 }
 
 export const CARDAPIOS_ALMOCO_JANTAR: CardapioAlmocoJantar[] = [
   {
     nome: "Cardápio econômico",
+    imagem: "/cardapio-economico.jpg",
     itens: [
       "Frango ao molho de ervas",
       "Carne assada ao molho madeira",
@@ -87,6 +89,7 @@ export const CARDAPIOS_ALMOCO_JANTAR: CardapioAlmocoJantar[] = [
   },
   {
     nome: "Cardápio intermediário",
+    imagem: "/cardapio-intermediario.jpg",
     itens: [
       "Maminha ao molho roti",
       "Frango recheado com queijo e presunto",
@@ -98,6 +101,7 @@ export const CARDAPIOS_ALMOCO_JANTAR: CardapioAlmocoJantar[] = [
   },
   {
     nome: "Cardápio sofisticado",
+    imagem: "/cardapio-sofisticado.jpg",
     itens: [
       "Filé-mignon ao molho madeira",
       "Salmão ao molho de maracujá",

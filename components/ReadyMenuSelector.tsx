@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Check, Info } from "lucide-react";
 import { CARDAPIOS_ALMOCO_JANTAR } from "@/data/menu";
 import { cx, SectionCard } from "./ui";
@@ -32,43 +33,56 @@ export function ReadyMenuSelector({
                 aria-checked={ativo}
                 onClick={() => onSelecionar(ativo ? "" : cardapio.nome)}
                 className={cx(
-                  "flex h-full w-full flex-col rounded-xl border p-4 text-left transition",
+                  "flex h-full w-full flex-col overflow-hidden rounded-xl border text-left transition sm:flex-row",
                   ativo
                     ? "border-accent/70 bg-accent/[0.08]"
                     : "border-line bg-surface-2/40 hover:border-accent/40",
                 )}
               >
-                <span className="flex items-center justify-between gap-2">
-                  <span className="font-display text-base text-accent-soft">
-                    {cardapio.nome}
+                {cardapio.imagem ? (
+                  <span className="relative block h-28 w-full shrink-0 sm:h-auto sm:w-1/3">
+                    <Image
+                      src={cardapio.imagem}
+                      alt={cardapio.nome}
+                      fill
+                      sizes="(max-width: 640px) 100vw, 10rem"
+                      className="object-cover"
+                    />
                   </span>
-                  <span
-                    className={cx(
-                      "flex h-5 w-5 shrink-0 items-center justify-center rounded-full border transition",
-                      ativo
-                        ? "border-accent bg-accent text-black"
-                        : "border-line",
-                    )}
-                  >
-                    {ativo ? (
-                      <Check className="h-3.5 w-3.5" strokeWidth={3} />
-                    ) : null}
-                  </span>
-                </span>
-                <ul className="mt-3 space-y-1">
-                  {cardapio.itens.map((item) => (
-                    <li
-                      key={item}
+                ) : null}
+                <span className="flex min-w-0 flex-1 flex-col p-4">
+                  <span className="flex items-center justify-between gap-2">
+                    <span className="font-display text-base text-accent-soft">
+                      {cardapio.nome}
+                    </span>
+                    <span
                       className={cx(
-                        "flex items-start gap-1.5 text-xs leading-snug",
-                        ativo ? "text-ink" : "text-muted",
+                        "flex h-5 w-5 shrink-0 items-center justify-center rounded-full border transition",
+                        ativo
+                          ? "border-accent bg-accent text-black"
+                          : "border-line",
                       )}
                     >
-                      <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-accent/70" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+                      {ativo ? (
+                        <Check className="h-3.5 w-3.5" strokeWidth={3} />
+                      ) : null}
+                    </span>
+                  </span>
+                  <ul className="mt-3 space-y-1">
+                    {cardapio.itens.map((item) => (
+                      <li
+                        key={item}
+                        className={cx(
+                          "flex items-start gap-1.5 text-xs leading-snug",
+                          ativo ? "text-ink" : "text-muted",
+                        )}
+                      >
+                        <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-accent/70" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </span>
               </button>
             );
           })}

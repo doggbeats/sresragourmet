@@ -163,7 +163,7 @@ export function GaleriaGrid({ fotos }: { fotos: string[] }) {
           ) : null}
 
           <div
-            className="relative h-[80vh] w-full max-w-4xl"
+            className="relative h-[55vh] w-full max-w-xl sm:h-[60vh]"
             onClick={(event) => event.stopPropagation()}
           >
             <Image

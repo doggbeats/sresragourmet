@@ -2,6 +2,7 @@
 
 import { AlertCircle, MessageCircle, Pencil, ShieldCheck } from "lucide-react";
 import type { ReactNode } from "react";
+import { CARDAPIOS_ALMOCO_JANTAR } from "@/data/menu";
 import { FUNCOES_EQUIPE, SERVICOS } from "@/data/services";
 import { formatarQuantidade } from "@/lib/beverage-calculator";
 import { formatarData } from "@/lib/format";
@@ -50,6 +51,11 @@ export function QuoteSummary({
 }) {
   const { evento } = estado;
   const convidados = parseConvidados(evento.convidados);
+  const cardapioProntoSelecionado = estado.cardapioPronto.trim()
+    ? CARDAPIOS_ALMOCO_JANTAR.find(
+        (cardapio) => cardapio.nome === estado.cardapioPronto,
+      )
+    : undefined;
 
   const pendencias: string[] = [];
   if (estado.incluirBebidas) {
@@ -148,7 +154,24 @@ export function QuoteSummary({
             ) : null}
             {estado.servicos.includes("almoco-jantar") &&
             estado.cardapioPronto.trim() ? (
-              <Linha rotulo="Cardápio pronto" valor={estado.cardapioPronto} />
+              <div className="text-sm">
+                <div className="flex items-start justify-between gap-4">
+                  <dt className="shrink-0 text-muted">Cardápio pronto</dt>
+                  <dd className="text-right text-ink">
+                    {estado.cardapioPronto}
+                  </dd>
+                </div>
+                {cardapioProntoSelecionado ? (
+                  <ul className="mt-1.5 space-y-0.5 pl-3 text-xs text-muted">
+                    {cardapioProntoSelecionado.itens.map((item) => (
+                      <li key={item} className="flex items-start gap-1.5">
+                        <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-accent/70" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+              </div>
             ) : null}
             {estado.servicos.includes("almoco-jantar") ? (
               <Linha

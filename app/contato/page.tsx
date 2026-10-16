@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Mail, MapPin } from "lucide-react";
 import { InstagramIcon, WhatsAppIcon } from "@/components/icons";
@@ -39,7 +40,15 @@ export default function ContatoPage() {
     <main className="mx-auto max-w-2xl px-4 py-12 sm:px-6">
       <header className="text-center">
         <Reveal>
-          <h1 className="font-display text-3xl text-accent-soft sm:text-4xl">
+          <Image
+            src="/sr.jpeg"
+            alt={`Logo ${NOME_BUFFET}`}
+            width={96}
+            height={96}
+            priority
+            className="mx-auto h-24 w-24 rounded-2xl border border-line object-cover"
+          />
+          <h1 className="mt-4 font-display text-3xl text-accent-soft sm:text-4xl">
             Contato
           </h1>
           <p className="mx-auto mt-2 max-w-xl text-sm text-muted">
@@ -51,7 +60,7 @@ export default function ContatoPage() {
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2">
         {contatos.map((contato, indice) => {
-          const classe = "flex h-full flex-col items-start gap-3 rounded-2xl border border-line bg-surface/70 p-5 transition hover:border-accent/40";
+          const classe = "flex h-full flex-col items-center gap-3 rounded-2xl border border-line bg-surface/70 p-5 text-center transition hover:border-accent/40";
           const conteudo = (
             <>
               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-line bg-surface-2 text-accent-soft">

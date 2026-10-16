@@ -85,19 +85,50 @@ export default async function ServicoPage({
         {secoes.map((secao, indice) =>
           secao.itens.length > 0 ? (
             <Reveal key={secao.titulo} delay={(indice % 3) * 80}>
-              <h2 className="text-xs font-medium uppercase tracking-wide text-muted">
-                {secao.titulo}
-              </h2>
-              <ul className="mt-2 flex flex-wrap gap-2">
-                {secao.itens.map((item) => (
-                  <li
-                    key={item}
-                    className="rounded-full border border-line bg-surface-2 px-3 py-1 text-xs text-ink"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
+              {secao.imagem ? (
+                <div className="overflow-hidden rounded-2xl border border-line bg-surface/70 sm:flex sm:items-stretch">
+                  <div className="relative aspect-[16/9] w-full sm:aspect-auto sm:w-1/3">
+                    <Image
+                      src={secao.imagem}
+                      alt={secao.titulo}
+                      fill
+                      sizes="(max-width: 640px) 100vw, 16rem"
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="flex flex-col justify-center p-4 sm:w-2/3">
+                    <h2 className="font-display text-lg text-accent-soft">
+                      {secao.titulo}
+                    </h2>
+                    <ul className="mt-3 flex flex-wrap gap-2">
+                      {secao.itens.map((item) => (
+                        <li
+                          key={item}
+                          className="rounded-full border border-line bg-surface-2 px-3 py-1 text-xs text-ink"
+                        >
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <h2 className="text-xs font-medium uppercase tracking-wide text-muted">
+                    {secao.titulo}
+                  </h2>
+                  <ul className="mt-2 flex flex-wrap gap-2">
+                    {secao.itens.map((item) => (
+                      <li
+                        key={item}
+                        className="rounded-full border border-line bg-surface-2 px-3 py-1 text-xs text-ink"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
             </Reveal>
           ) : null,
         )}

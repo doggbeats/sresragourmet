@@ -18,7 +18,7 @@ const SLIDES = [
       "Crepes irresistíveis e massas deliciosas para transformar cada ocasião em um momento especial.",
   },
   {
-    src: "/jantares.webp",
+    src: "/churrasco-2.jpg",
     titulo: "Seu evento merece um sabor inesquecível!",
     texto:
       "Crepes irresistíveis e massas deliciosas para transformar cada ocasião em um momento especial.",
