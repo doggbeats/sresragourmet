@@ -35,12 +35,12 @@ const HISTORIA = [
   "Os caminhos de Ancelmo e Elizete se cruzaram em uma festa. Desse encontro nasceu uma história de amor que, com o tempo, se transformou também em uma parceria de vida, sonhos e realizações.",
   "Antes de construírem o próprio negócio, os dois trabalharam em outros buffets, desempenhando funções como ajudantes de cozinha, garçons e bartenders. Cada experiência foi importante para o crescimento profissional do casal, ensinando-lhes o valor do trabalho em equipe, da responsabilidade e da dedicação em cada detalhe.",
   "Com experiência, coragem e o desejo de conquistar seu próprio espaço, decidiram unir seus talentos e colocar em prática aquilo que tinham de mais especial: o dom de cozinhar e o prazer de servir bem.",
-  "Assim nasceu a SRESRTA Gourmet, uma empresa construída com muito trabalho, amor e dedicação, que representa a realização de um sonho compartilhado e o compromisso de oferecer experiências gastronômicas especiais.",
+  "Assim nasceu a Sr e Sra Gourmet, uma empresa construída com muito trabalho, amor e dedicação, que representa a realização de um sonho compartilhado e o compromisso de oferecer experiências gastronômicas especiais.",
   "Hoje, atuamos com buffet em geral, atendendo aniversários, festas de 15 anos, churrascos, almoços, jantares, rodízios de massas, festivais de crepes e diversas outras celebrações. Cada evento recebe nossa atenção e nosso carinho, pois acreditamos que cada cliente tem uma história única e merece um serviço preparado com cuidado, qualidade e profissionalismo.",
   "Para nós, trabalhar com buffet vai muito além de preparar e servir alimentos. É participar de momentos importantes, reunir famílias e amigos, celebrar conquistas e contribuir para que cada ocasião se transforme em uma lembrança feliz.",
-  "A SRESRTA Gourmet é fruto de mais de 15 anos de experiência no ramo, de uma parceria construída com amor e da determinação de duas pessoas que acreditam no poder do trabalho bem-feito.",
+  "A Sr e Sra Gourmet é fruto de mais de 15 anos de experiência no ramo, de uma parceria construída com amor e da determinação de duas pessoas que acreditam no poder do trabalho bem-feito.",
   "Somos Ancelmo e Elizete. Somos uma história de amor, superação e paixão pela gastronomia. E é com esse sentimento que recebemos cada cliente, cuidamos de cada detalhe e fazemos parte de cada celebração.",
-  "SRESRTA Gourmet — muito mais que buffet: sabor, carinho e dedicação para tornar seus momentos inesquecíveis!",
+  "Sr e Sra Gourmet — muito mais que buffet: sabor, carinho e dedicação para tornar seus momentos inesquecíveis!",
   "Será uma honra fazer parte da sua história e contribuir para que seu evento seja tão especial quanto você sonhou.",
 ];
 
@@ -80,7 +80,9 @@ export default function SobrePage() {
             gastronomia
           </h2>
           {HISTORIA.map((paragrafo) => (
-            <p key={paragrafo}>{paragrafo}</p>
+            <p className="text-justify" key={paragrafo}>
+              {paragrafo}
+            </p>
           ))}
         </section>
       </Reveal>
